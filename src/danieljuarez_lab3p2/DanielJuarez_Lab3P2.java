@@ -39,14 +39,14 @@ public class DanielJuarez_Lab3P2 {
                                 + "\n1) Crear Casa"
                                 + "\n2) Modificar Casa"
                                 + "\n3) Eliminar Casa"
-                                + "\n \n--- Apartamentos ---"
-                                + "\n4) Crear Apartamento"
-                                + "\n5) Modificar Apartamento"
-                                + "\n6) Eliminar Apartamento"
                                 + "\n \n--- Edificios ---"
-                                + "\n7) Crear Edificio"
-                                + "\n8) Modificar Edificio"
-                                + "\n9) Eliminar Edificio"
+                                + "\n4) Crear Edificio"
+                                + "\n5) Modificar Edificio"
+                                + "\n6) Eliminar Edificio"
+                                + "\n \n--- Apartamentos ---"
+                                + "\n7) Crear Apartamento"
+                                + "\n8) Modificar Apartamento"
+                                + "\n9) Eliminar Apartamento"
                                 + "\n \n"
                                 + "\n10) Salir", "Residencial", JOptionPane.PLAIN_MESSAGE));
 
@@ -79,11 +79,10 @@ public class DanielJuarez_Lab3P2 {
                                 Residenciales.get(modres).getCasas().get(edit).setDimensiones(dimensiones);
                                 Residenciales.get(modres).getCasas().get(edit).setId(id);
                                 Residenciales.get(modres).getCasas().get(edit).setNumero(numero);
-                                Residenciales.get(modres).getCasas().get(edit).setReferenciaRes(referenciares);
                             }
                             break;
                             case 3: {
-                                Residencial res = new Residencial();
+                                Residencial res = Residenciales.get(modres);
                                 for (int i = 0; i < res.Casas.size(); i++) {
                                     System.out.println(i + " - " + res.Casas.get(i));
                                 }
@@ -91,6 +90,49 @@ public class DanielJuarez_Lab3P2 {
                                 Residenciales.get(modres).getCasas().remove(delete);
                             }
                             break;
+
+                            //---------------- EDIFICIO
+                            case 4: {
+                                String tipo = "Edificio";
+                                String direccion = JOptionPane.showInputDialog(null, "Ingrese la Dirección del Bienes Inmuebles", JOptionPane.PLAIN_MESSAGE);
+                                String dimensiones = JOptionPane.showInputDialog(null, "Ingrese las Dimensiones del Bienes Inmuebles", JOptionPane.PLAIN_MESSAGE);
+                                int id = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese el ID del Bienes Inmuebles", JOptionPane.PLAIN_MESSAGE));
+                                int cantlocales = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese el Numero de Locales", JOptionPane.PLAIN_MESSAGE));
+                                String nombreEd = JOptionPane.showInputDialog(null, "Ingrese el Numero de Edificios", JOptionPane.PLAIN_MESSAGE);
+                                String referenciares = Residenciales.get(modres).getNombreRes();
+                                Edificio e = new Edificio(cantlocales, nombreEd, tipo, direccion, dimensiones, id);
+                                Residenciales.get(modres).getEdificios().add(e);
+                            }
+                            break;
+                            case 5: {
+                                String cambiar = "";
+                                Residencial res = Residenciales.get(modres);
+                                for (int i = 0; i < res.Edificios.size(); i++) {
+                                    cambiar += i + " - " + res.Edificios.get(i) + "\n";
+                                }
+                                int edit = Integer.parseInt(JOptionPane.showInputDialog(null, cambiar + "\nIngrese el Número de Casa a Editar", "SIU", JOptionPane.PLAIN_MESSAGE));
+                                String tipo = "Edificio";
+                                String direccion = JOptionPane.showInputDialog(null, "Ingrese la Dirección del Bienes Inmuebles", JOptionPane.PLAIN_MESSAGE);
+                                String dimensiones = JOptionPane.showInputDialog(null, "Ingrese las Dimensiones del Bienes Inmuebles", JOptionPane.PLAIN_MESSAGE);
+                                int id = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese el ID del Bienes Inmuebles", JOptionPane.PLAIN_MESSAGE));
+                                int cantlocales = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese el Numero de Locales", JOptionPane.PLAIN_MESSAGE));
+                                String nombreEd = JOptionPane.showInputDialog(null, "Ingrese el Numero de Edificios", JOptionPane.PLAIN_MESSAGE);
+                                String referenciares = Residenciales.get(modres).getNombreRes();
+                                Residenciales.get(modres).getEdificios().get(edit).setDireccion(direccion);
+                                Residenciales.get(modres).getEdificios().get(edit).setDimensiones(dimensiones);
+                                Residenciales.get(modres).getEdificios().get(edit).setId(id);
+                                Residenciales.get(modres).getEdificios().get(edit).setCantlocales(cantlocales);
+                                Residenciales.get(modres).getEdificios().get(edit).setNombreEd(nombreEd);
+                            }
+                            break;
+                            case 6: {
+                                Residencial res = Residenciales.get(modres);
+                                for (int i = 0; i < res.Edificios.size(); i++) {
+                                    System.out.println(i + " - " + res.Edificios.get(i));
+                                }
+                                int delete = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese el Número del Edificio a Eliminar", JOptionPane.PLAIN_MESSAGE));
+                                Residenciales.get(modres).getEdificios().remove(delete);
+                            }
                         }
                     }
 
