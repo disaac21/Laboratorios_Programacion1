@@ -48,6 +48,11 @@ public class BienesInmuebles {
     public void setId(int id) {
         this.id = id;
     }
+
+    @Override
+    public String toString() {
+        return "BienesInmuebles{" + "tipo=" + tipo + ", direccion=" + direccion + ", dimensiones=" + dimensiones + ", id=" + id + '}';
+    }
     
     
     

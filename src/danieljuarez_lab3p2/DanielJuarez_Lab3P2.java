@@ -6,6 +6,7 @@ import javax.swing.JOptionPane;
 public class DanielJuarez_Lab3P2 {
 
     static ArrayList<Residencial> Residenciales = new ArrayList();
+    static ArrayList<Cliente> Clientes = new ArrayList();
 
     public static void main(String[] args) {
 
@@ -203,7 +204,7 @@ public class DanielJuarez_Lab3P2 {
                     }
                 }
                 break;
-                case 3:{
+                case 3: {
                     String caso2 = "";
                     for (int i = 0; i < Residenciales.size(); i++) {
                         caso2 += i + " - " + Residenciales.get(i) + "\n";
@@ -214,11 +215,170 @@ public class DanielJuarez_Lab3P2 {
                     Residenciales.remove(modres);
                 }
                 break;
-                case 4:{
-                    
+                case 4: {
+                    int clients = 0;
+                    while (clients != 5) {
+                        clients = Integer.parseInt(JOptionPane.showInputDialog(null, "\n1) Crear Cliente"
+                                + "\n2) Vender"
+                                + "\n3) Eliminar Cliente"
+                                + "\n4) Ver Clientes"
+                                + "\n5) Salir", "Clientes", JOptionPane.PLAIN_MESSAGE));
+
+                        switch (clients) {
+                            case 1: {
+                                String nombre = JOptionPane.showInputDialog(null, "Ingrese el Nombre", JOptionPane.PLAIN_MESSAGE);
+                                int edad = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese la Edad", JOptionPane.PLAIN_MESSAGE));
+                                int id = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese el ID", JOptionPane.PLAIN_MESSAGE));
+                                String usuario = JOptionPane.showInputDialog(null, "Ingrese el Usuario", JOptionPane.PLAIN_MESSAGE);
+                                String contraseña = JOptionPane.showInputDialog(null, "Ingrese la Constraseña", JOptionPane.PLAIN_MESSAGE);
+                                Cliente client = new Cliente(nombre, edad, id, usuario, contraseña);
+                                Clientes.add(client);
+                            }
+                            break;
+                            case 2: {
+                                String printcliente = "";
+                                for (int i = 0; i < Clientes.size(); i++) {
+                                    printcliente += i + " - " + Clientes.get(i) + "\n";
+                                }
+                                int buyclientes = 0;
+                                buyclientes = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese el Cliente\n"
+                                        + printcliente, "Compra", JOptionPane.PLAIN_MESSAGE));
+                                int venta = 0;
+                                while (venta != 4) {
+                                    venta = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese la Venta"
+                                            + "\n1) Casa"
+                                            + "\n2) Edificio"
+                                            + "\n3) Apartamento"
+                                            + "\n4) Salir", "Clientes", JOptionPane.PLAIN_MESSAGE));
+
+                                    switch (venta) {
+                                        case 1: {
+                                            String caso2 = "";
+                                            for (int i = 0; i < Residenciales.size(); i++) {
+                                                caso2 += i + " - " + Residenciales.get(i) + "\n";
+                                            }
+                                            int modres = 0;
+                                            modres = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese la Residencial de la Compra\n"
+                                                    + caso2, "Compra", JOptionPane.PLAIN_MESSAGE));
+                                            String buy = "";
+                                            Residencial res = Residenciales.get(modres);
+                                            for (int j = 0; j < res.Casas.size(); j++) {
+                                                buy += j + " - " + res.Casas.get(j) + "\n";
+                                            }
+                                            int compra = Integer.parseInt(JOptionPane.showInputDialog(null, buy + "\nIngrese el Número de Casa a Comprar", "SIU", JOptionPane.PLAIN_MESSAGE));
+
+                                            String usuario = JOptionPane.showInputDialog(null, "Ingrese el Usuario", JOptionPane.PLAIN_MESSAGE);
+                                            String contraseña = JOptionPane.showInputDialog(null, "Ingrese la Constraseña", JOptionPane.PLAIN_MESSAGE);
+
+                                            String clienteee = "";
+                                            for (int i = 0; i < Clientes.size(); i++) {
+                                                clienteee += i + " - " + Clientes.get(i) + "\n";
+                                            }
+                                            int buying1 = 0;
+                                            buying1 = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese el Cliente\n"
+                                                    + printcliente, "Compra", JOptionPane.PLAIN_MESSAGE));
+                                            if (usuario.equals(Clientes.get(buying1).getUsuario()) && contraseña.equals(Clientes.get(buying1).getContraseña())) {
+                                                Casa aux = Residenciales.get(modres).Casas.get(compra);
+                                                Residenciales.get(modres).Casas.remove(compra);
+                                                Clientes.get(buyclientes).CasasBought.add(aux);
+                                            } else {
+                                                JOptionPane.showMessageDialog(null, "No Se Pudo Efectuar la Compra");
+                                            }
+                                        }
+                                        break;
+                                        case 2: {
+                                            String caso2 = "";
+                                            for (int i = 0; i < Residenciales.size(); i++) {
+                                                caso2 += i + " - " + Residenciales.get(i) + "\n";
+                                            }
+                                            int modres = 0;
+                                            modres = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese la Residencial de la Compra\n"
+                                                    + caso2, "Compra", JOptionPane.PLAIN_MESSAGE));
+                                            String buy = "";
+                                            Residencial res = Residenciales.get(modres);
+                                            for (int j = 0; j < res.Edificios.size(); j++) {
+                                                buy += j + " - " + res.Edificios.get(j) + "\n";
+                                            }
+                                            int compra = Integer.parseInt(JOptionPane.showInputDialog(null, buy + "\nIngrese el Número del Edificio a Comprar", "SIU", JOptionPane.PLAIN_MESSAGE));
+
+                                            String usuario = JOptionPane.showInputDialog(null, "Ingrese el Usuario", JOptionPane.PLAIN_MESSAGE);
+                                            String contraseña = JOptionPane.showInputDialog(null, "Ingrese la Constraseña", JOptionPane.PLAIN_MESSAGE);
+
+                                            String client3 = "";
+                                            for (int i = 0; i < Clientes.size(); i++) {
+                                                client3 += i + " - " + Clientes.get(i) + "\n";
+                                            }
+                                            int cliente3 = 0;
+                                            cliente3 = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese el Cliente\n"
+                                                    + printcliente, "Compra", JOptionPane.PLAIN_MESSAGE));
+                                            if (usuario.equals(Clientes.get(cliente3).getUsuario()) && contraseña.equals(Clientes.get(cliente3).getContraseña())) {
+                                                Edificio aux = Residenciales.get(modres).Edificios.get(compra);
+                                                Residenciales.get(modres).Edificios.remove(compra);
+                                                Clientes.get(buyclientes).EdificiosBought.add(aux);
+                                            } else {
+                                                JOptionPane.showMessageDialog(null, "No Se Pudo Efectuar la Compra");
+                                            }
+                                        }
+                                        break;
+                                        case 3: {
+                                            String caso2 = "";
+                                            for (int i = 0; i < Residenciales.size(); i++) {
+                                                caso2 += i + " - " + Residenciales.get(i) + "\n";
+                                            }
+                                            int modres = 0;
+                                            modres = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese la Residencial de la Compra\n"
+                                                    + caso2, "Compra", JOptionPane.PLAIN_MESSAGE));
+                                            String cambiar = "";
+                                            Residencial res = Residenciales.get(modres);
+                                            for (int i = 0; i < res.Edificios.size(); i++) {
+                                                cambiar += i + " - " + res.Edificios.get(i) + "\n";
+                                            }
+                                            String cambios = "";
+                                            int edit = Integer.parseInt(JOptionPane.showInputDialog(null, cambiar + "\nIngrese el Número del Edificio del Apartamento", "SIU", JOptionPane.PLAIN_MESSAGE));
+                                            for (int i = 0; i < res.Edificios.get(edit).Apartamentos.size(); i++) {
+                                                cambios += i + " - " + res.Edificios.get(edit).Apartamentos.get(i) + "\n";
+                                            }
+                                            int editapart = Integer.parseInt(JOptionPane.showInputDialog(null, cambiar + "\nIngrese el Número del Apartamento", "SIU", JOptionPane.PLAIN_MESSAGE));
+
+                                            String usuario = JOptionPane.showInputDialog(null, "Ingrese el Usuario", JOptionPane.PLAIN_MESSAGE);
+                                            String contraseña = JOptionPane.showInputDialog(null, "Ingrese la Constraseña", JOptionPane.PLAIN_MESSAGE);
+
+                                            String clienteee = "";
+                                            for (int i = 0; i < Clientes.size(); i++) {
+                                                printcliente += i + " - " + Clientes.get(i) + "\n";
+                                            }
+                                            int buying = 0;
+                                            buyclientes = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese el Cliente\n"
+                                                    + printcliente, "Compra", JOptionPane.PLAIN_MESSAGE));
+                                            if (usuario.equals(Clientes.get(buying).getUsuario()) && contraseña.equals(Clientes.get(buying).getContraseña())) {
+                                                Apartamento aux = Residenciales.get(modres).Edificios.get(edit).Apartamentos.get(editapart);
+                                                Residenciales.get(modres).Edificios.get(edit).Apartamentos.remove(editapart);
+                                                Clientes.get(buyclientes).ApartamentosBought.add(aux);
+                                            } else {
+                                                JOptionPane.showMessageDialog(null, "No Se Pudo Efectuar la Compra");
+                                            }
+                                        }
+                                        break;
+                                    }
+                                }
+                            }
+                            break;
+                            case 3: {
+                                String printcliente = "";
+                                for (int i = 0; i < Clientes.size(); i++) {
+                                    printcliente += i + " - " + Clientes.get(i) + "\n";
+                                }
+                                int buying = 0;
+                                buying = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese el Cliente\n"
+                                        + printcliente, "Compra", JOptionPane.PLAIN_MESSAGE));
+                                
+                                Clientes.remove(buying);
+                            }
+                        }
+                    }
                 }
+                break;
             }
         }
     }
-
 }

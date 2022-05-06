@@ -46,6 +46,11 @@ public class Edificio extends BienesInmuebles {
     public void setApartamentos(ArrayList<Apartamento> Apartamentos) {
         this.Apartamentos = Apartamentos;
     }
+
+    @Override
+    public String toString() {
+        return "Edificio{" + "cantlocales=" + cantlocales + ", nombreEd=" + nombreEd + ", Apartamentos=" + Apartamentos + '}';
+    }
     
     
     

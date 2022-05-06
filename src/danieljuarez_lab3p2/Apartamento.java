@@ -36,6 +36,11 @@ public class Apartamento extends BienesInmuebles {
     public void setReferenciaEd(String referenciaEd) {
         this.referenciaEd = referenciaEd;
     }
+
+    @Override
+    public String toString() {
+        return "Apartamento{" + "numlocal=" + numlocal + ", referenciaEd=" + referenciaEd + '}';
+    }
     
     
     
