@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 public class Residencial {
 
-    public ArrayList<BienesInmuebles> Casas = new ArrayList<>();
-    public ArrayList<BienesInmuebles> Edificios = new ArrayList<>();
+    public ArrayList<Casa> Casas = new ArrayList<>();
+    public ArrayList<Edificio> Edificios = new ArrayList<>();
     public String nombreRes;
 
     public Residencial() {
@@ -23,20 +23,26 @@ public class Residencial {
         this.nombreRes = nombreRes;
     }
 
-    public ArrayList<BienesInmuebles> getCasas() {
+    public ArrayList<Casa> getCasas() {
         return Casas;
     }
 
-    public void setCasas(ArrayList<BienesInmuebles> Casas) {
+    public void setCasas(ArrayList<Casa> Casas) {
         this.Casas = Casas;
     }
 
-    public ArrayList<BienesInmuebles> getEdificios() {
+    public ArrayList<Edificio> getEdificios() {
         return Edificios;
     }
 
-    public void setEdificios(ArrayList<BienesInmuebles> Edificios) {
+    public void setEdificios(ArrayList<Edificio> Edificios) {
         this.Edificios = Edificios;
     }
 
+    @Override
+    public String toString() {
+        return "Residencial " + nombreRes;
+    }
+
+    
 }

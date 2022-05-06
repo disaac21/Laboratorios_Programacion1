@@ -7,9 +7,16 @@ public class Apartamento extends BienesInmuebles {
     public String referenciaEd;
 
     public Apartamento() {
+        super();
     }
 
     public Apartamento(int numlocal, String referenciaEd) {
+        this.numlocal = numlocal;
+        this.referenciaEd = referenciaEd;
+    }
+
+    public Apartamento(int numlocal, String referenciaEd, String tipo, String direccion, String dimensiones, int id) {
+        super(tipo, direccion, dimensiones, id);
         this.numlocal = numlocal;
         this.referenciaEd = referenciaEd;
     }

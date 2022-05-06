@@ -8,7 +8,13 @@ public class Casa extends BienesInmuebles {
     public Casa() {
     }
     
-    public Casa(int numero, String referenciaRes) {
+    public Casa(int numero, String referenciaRes) {   
+        this.numero = numero;
+        this.referenciaRes = referenciaRes;
+    }
+
+    public Casa(int numero, String referenciaRes, String tipo, String direccion, String dimensiones, int id) {
+        super(tipo, direccion, dimensiones, id);
         this.numero = numero;
         this.referenciaRes = referenciaRes;
     }
@@ -27,6 +33,11 @@ public class Casa extends BienesInmuebles {
 
     public void setReferenciaRes(String referenciaRes) {
         this.referenciaRes = referenciaRes;
+    }
+
+    @Override
+    public String toString() {
+        return "Casa Numero " + numero + "\nReferencia Residencial: " + referenciaRes + "\n";
     }
     
     
