@@ -38,6 +38,14 @@ public class Edificio extends BienesInmuebles {
     public void setNombreEd(String nombreEd) {
         this.nombreEd = nombreEd;
     }
+
+    public ArrayList<Apartamento> getApartamentos() {
+        return Apartamentos;
+    }
+
+    public void setApartamentos(ArrayList<Apartamento> Apartamentos) {
+        this.Apartamentos = Apartamentos;
+    }
     
     
     
